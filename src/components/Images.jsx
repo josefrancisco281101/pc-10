@@ -45,7 +45,7 @@ export default function Images() {
           <Box
             key={image.id}
             onClick={() => setSelectedImage(image.img)}
-            sx={{ width: { xs: 70, md: 82 }, flexShrink: 0 }}
+            sx={{ width: { xs: 70, md: 80 }, flexShrink: 0 }}
           >
             <div
               style={{
@@ -63,7 +63,7 @@ export default function Images() {
                   height: "100%",
                   objectFit: "cover",
                   cursor: "pointer",
-                  borderRadius: "8px",
+                  borderRadius: "7px",
 
                   opacity: selectedImage === image.img ? "0.5 " : "1",
                   transition: "opacity 0.3s ease",

@@ -44,6 +44,7 @@ function ResponsiveAppBar() {
         px: { xs: 0, md: 8 },
 
         maxWidth: { xs: "400px", md: "100%" },
+
         margin: { xs: "0 auto", md: "0" },
       }}
     >
