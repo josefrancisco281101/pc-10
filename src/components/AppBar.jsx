@@ -16,19 +16,34 @@ import AdbIcon from "@mui/icons-material/Adb";
 const pages = ["Collections", "Men", "Women", "About", "Contact"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
+const carrito = [
+  { id: 1, name: "Item 1" },
+  { id: 2, name: "Item 2" },
+];
+
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorElShoppingCart, setAnchorElShoppingCart] = React.useState(null);
+
+  const handleOpenShoppingCart = (event) => {
+    setAnchorElShoppingCart(event.currentTarget);
+  };
+
+  const handleCloseShoppingCart = () => {
+    setAnchorElShoppingCart(null);
+  };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
+  };
+
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
   };
 
   const handleCloseUserMenu = () => {
@@ -42,9 +57,7 @@ function ResponsiveAppBar() {
         backgroundColor: "white",
         boxShadow: "none",
         px: { xs: 0, md: 8 },
-
         maxWidth: { xs: "400px", md: "100%" },
-
         margin: { xs: "0 auto", md: "0" },
       }}
     >
@@ -138,14 +151,46 @@ function ResponsiveAppBar() {
           </Box>
 
           <Box sx={{ flexGrow: 0, display: "flex", alignItems: "center" }}>
-            <IconButton sx={{ color: "black" }}>
+            <IconButton
+              onClick={handleOpenShoppingCart}
+              sx={{ color: "black", marginRight: 2 }}
+            >
               <Box
                 component="img"
                 alt="Shopping cart"
                 src="../../images/icon-cart.svg"
-                sx={{ width: 20, height: 20, marginInline: 2 }}
+                sx={{ width: 20, height: 20 }}
               />
             </IconButton>
+            <Menu
+              id="shopping-cart-menu"
+              anchorEl={anchorElShoppingCart}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={Boolean(anchorElShoppingCart)}
+              onClose={handleCloseShoppingCart}
+              sx={{ mt: 2, cursor: "pointer" }}
+            >
+              {carrito.length > 0 ? (
+                carrito.map((item) => (
+                  <MenuItem key={item.id} onClick={handleCloseShoppingCart}>
+                    <Typography textAlign="center">{item.name}</Typography>
+                  </MenuItem>
+                ))
+              ) : (
+                <MenuItem onClick={handleCloseShoppingCart}>
+                  <Typography textAlign="center">Your cart is empty</Typography>
+                </MenuItem>
+              )}
+            </Menu>
+
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="../../images/image-avatar.png" />
