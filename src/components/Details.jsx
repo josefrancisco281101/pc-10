@@ -8,7 +8,7 @@ export default function Details() {
     <Box
       sx={{
         padding: 2,
-        maxWidth: { xs: "400px", md: "100%", marginTop: 40 },
+        maxWidth: { xs: "400px", md: "100%", marginTop: 50 },
         marginRight: { md: 10 },
       }}
     >
@@ -135,6 +135,7 @@ export default function Details() {
               background: "#ff7d1b",
             },
             width: { sm: "100%", md: "auto" },
+            px: { md: 7 },
           }}
         >
           <ShoppingCartIcon sx={{ mr: 1 }} />

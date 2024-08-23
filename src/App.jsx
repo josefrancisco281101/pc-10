@@ -12,12 +12,12 @@ export default function App() {
       <Box
         sx={{
           display: "flex",
-          flexDirection: { xs: "column", md: "row" },
-          gap: 2,
-          p: 2,
-          maxWidth: { xs: "400px", md: "100%" },
-          maxHeight: { xs: "400px", md: "100%" },
-          margin: { xs: "0 auto", md: "0" },
+          flexDirection: { sm: "column", md: "row" },
+
+          py: 2,
+          maxWidth: { sm: "400px", md: "100%" },
+          maxHeight: { sm: "400px", md: "100%" },
+          margin: { sm: "0 auto", md: "0" },
         }}
       >
         <Images />
